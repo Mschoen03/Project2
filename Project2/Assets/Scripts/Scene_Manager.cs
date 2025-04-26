@@ -9,4 +9,9 @@ public class Scene_Manager : MonoBehaviour
     {
         SceneManager.LoadSceneAsync(1);
     }
+
+    public void Next()
+    {
+        SceneManager.LoadSceneAsync(2);
+    }
 }

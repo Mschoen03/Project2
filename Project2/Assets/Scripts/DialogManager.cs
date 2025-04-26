@@ -10,8 +10,12 @@ public class DialogManager : MonoBehaviour
     private int index;
     public float typingSpeed;
 
+    public GameObject ContinueButton;
+    public GameObject dialogPanel;
+
     void OnEnable()
     {
+        ContinueButton.SetActive(false);
         StartCoroutine(Type());
     }
 
@@ -24,10 +28,14 @@ public class DialogManager : MonoBehaviour
             textbox.text += letter;
             yield return new WaitForSeconds(typingSpeed);
         }
+
+        ContinueButton.SetActive(true);
     }
 
     public void NextSentence()
     {
+        ContinueButton.SetActive(false);
+
         if(index < senetences.Length - 1)
         {
             index++;
@@ -37,6 +45,7 @@ public class DialogManager : MonoBehaviour
         else
         {
             textbox.text = "";
+            dialogPanel.SetActive(false);
         }
     }
 }
