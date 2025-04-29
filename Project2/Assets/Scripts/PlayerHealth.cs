@@ -23,17 +23,10 @@ public class PlayerHealth : MonoBehaviour
         
     }
 
-    //Player takes damage
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.CompareTag("Enemy"))
-        {
-            TakeDamage(10); // Adjust damage as needed
-        }
-    }
 
 
-    void TakeDamage(int amount)
+
+    public void TakeDamage(int amount)
     {
         currentHealth -= amount;
         Debug.Log("Player took damage! Current HP: " + currentHealth);
@@ -44,6 +37,7 @@ public class PlayerHealth : MonoBehaviour
             Die();
         }
     }
+
 
     void Die()
     {
