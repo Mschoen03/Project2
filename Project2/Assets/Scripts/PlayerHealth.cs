@@ -46,5 +46,9 @@ public class PlayerHealth : MonoBehaviour
         // Add death animation, respawn, game over screen, etc.
     }
 
+    public int GetCurrentHealth()
+{
+    return currentHealth;
+}
 
 }
