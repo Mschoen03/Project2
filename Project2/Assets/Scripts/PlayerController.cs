@@ -117,30 +117,3 @@ public class PlayerController : MonoBehaviour
         rb.MovePosition(rb.position + moveInput * currentSpeed * Time.fixedDeltaTime);
     }
 }
-
-
-
-
-
-/* TANK PLAYER CONTROLLER
-        //public float horizontalInput;
-        //public float verticalInput;
-        void Update()
-        {
-        horizontalInput = Input.GetAxis("Horizontal");
-        verticalInput = Input.GetAxis("Vertical");
-
-        transform.Translate(Vector2.right * Time.deltaTime * speed * verticalInput);
-
-        //transform.Rotate(Vector3.forward, turnSpeed * Time.deltaTime * horizontalInput);
-
-        if (verticalInput < 0)
-        {
-            transform.Rotate(Vector3.back, -turnSpeed * Time.deltaTime * horizontalInput);
-        }
-        else
-        {
-            transform.Rotate(Vector3.back, turnSpeed * Time.deltaTime * horizontalInput);
-        }
-        }
-        */

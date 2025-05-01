@@ -1,15 +1,22 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class ZombieMovement : MonoBehaviour
 {
-    public float moveSpeed = 2f; // How fast the zombie moves
-    private Transform player;    // Player's transform
+    public float baseSpeed = 2f;        // Starting speed
+    public float maxSpeed = 6f;         // Max speed it can reach
+    public float accelerationRate = 0.5f; // How fast it ramps up (units/sec)
+
+    private float currentSpeed;
+    private Transform player;
+    private Rigidbody2D rb;
 
     void Start()
     {
-        // Find the player by tag
+        rb = GetComponent<Rigidbody2D>();
+        currentSpeed = baseSpeed;
+
         GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
         if (playerObj != null)
         {
@@ -21,13 +28,22 @@ public class ZombieMovement : MonoBehaviour
         }
     }
 
-    void Update()
+    void FixedUpdate()
     {
         if (player != null)
         {
-            // Move toward the player
+            // Gradually increase speed
+            if (currentSpeed < maxSpeed)
+            {
+                currentSpeed += accelerationRate * Time.fixedDeltaTime;
+                if (currentSpeed > maxSpeed)
+                    currentSpeed = maxSpeed;
+            }
+
+            // Move toward player
             Vector2 direction = (player.position - transform.position).normalized;
-            transform.position += (Vector3)(direction * moveSpeed * Time.deltaTime);
+            Vector2 moveStep = direction * currentSpeed * Time.fixedDeltaTime;
+            rb.MovePosition(rb.position + moveStep);
         }
     }
 }

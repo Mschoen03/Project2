@@ -2289,7 +2289,7 @@ GameObject:
   - component: {fileID: 200442637}
   - component: {fileID: 200442636}
   - component: {fileID: 200442635}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2387,7 +2387,7 @@ GameObject:
   m_Component:
   - component: {fileID: 284361431}
   - component: {fileID: 284361432}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ArmL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2566,13 +2566,14 @@ GameObject:
   m_Component:
   - component: {fileID: 521678158}
   - component: {fileID: 521678157}
-  - component: {fileID: 521678156}
   - component: {fileID: 521678160}
   - component: {fileID: 521678159}
   - component: {fileID: 521678161}
-  m_Layer: 0
+  - component: {fileID: 521678162}
+  - component: {fileID: 521678156}
+  m_Layer: 6
   m_Name: Zombie
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2589,7 +2590,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1cff0c2da1a4214680d59e91f44f865, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 1.5
+  baseSpeed: 1
+  maxSpeed: 2
+  accelerationRate: 0.1
 --- !u!212 &521678157
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2649,7 +2652,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 521678155}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -60.8, y: -14.09, z: 0}
+  m_LocalPosition: {x: -64.04, y: -14.33, z: -1.15}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 200442634}
@@ -2684,7 +2687,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 0.1
+  m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
@@ -2692,7 +2695,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 7
+  m_Constraints: 4
 --- !u!114 &521678161
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2706,6 +2709,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 20
+--- !u!114 &521678162
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 521678155}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f03c96af58da33d42aa50fecec3c04c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playerAwarenessDistance: 10
 --- !u!1 &555548739
 GameObject:
   m_ObjectHideFlags: 0
@@ -2720,7 +2736,7 @@ GameObject:
   - component: {fileID: 555548741}
   - component: {fileID: 555548740}
   - component: {fileID: 555548745}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -49920,7 +49936,7 @@ GameObject:
   - component: {fileID: 620925808}
   - component: {fileID: 620925809}
   - component: {fileID: 620925810}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: HealthBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -50053,7 +50069,7 @@ GameObject:
   - component: {fileID: 781594874}
   - component: {fileID: 781594876}
   - component: {fileID: 781594875}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -50397,7 +50413,7 @@ GameObject:
   - component: {fileID: 1099890021}
   - component: {fileID: 1099890023}
   - component: {fileID: 1099890022}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: LossText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -50567,7 +50583,7 @@ GameObject:
   - component: {fileID: 1164208834}
   - component: {fileID: 1164208833}
   - component: {fileID: 1164208832}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -50806,7 +50822,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1238351290}
   - component: {fileID: 1238351291}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Weapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -51037,7 +51053,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1336762955}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Fill Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -51309,7 +51325,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d4f6fd9495fcc84a987a0c854ce0e54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spikeDamage: 10
+  spikeDamage: 20
 --- !u!1 &1571299056
 GameObject:
   m_ObjectHideFlags: 0
@@ -63946,7 +63962,7 @@ GameObject:
   - component: {fileID: 1648610485}
   - component: {fileID: 1648610487}
   - component: {fileID: 1648610486}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -64010,6 +64026,53 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1648610484}
   m_CullTransparentMesh: 1
+--- !u!1 &1858479588
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1858479590}
+  - component: {fileID: 1858479589}
+  m_Layer: 0
+  m_Name: ZombieSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &1858479589
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1858479588}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e43f52e37ee3ca448bb8a0805712bf41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _enemyPrefab: {fileID: 0}
+  _minimumSpawnTime: 1
+  _maximumSpawnTime: 2
+  _maxSpawnCount: 3
+--- !u!4 &1858479590
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1858479588}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -68.66, y: -19.21, z: -2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1871160115
 GameObject:
   m_ObjectHideFlags: 0
@@ -64139,7 +64202,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2037228737}
   - component: {fileID: 2037228738}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ArmR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
