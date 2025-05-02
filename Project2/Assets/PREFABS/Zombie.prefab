@@ -359,7 +359,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseSpeed: 1
   maxSpeed: 2
-  accelerationRate: 0.1
+  accelerationRate: 0.01
 --- !u!95 &1821989084109805194
 Animator:
   serializedVersion: 5

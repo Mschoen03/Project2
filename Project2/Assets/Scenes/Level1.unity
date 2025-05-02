@@ -4577,6 +4577,53 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &406042066
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 406042068}
+  - component: {fileID: 406042067}
+  m_Layer: 0
+  m_Name: ZombieSpawner (4)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &406042067
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 406042066}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e43f52e37ee3ca448bb8a0805712bf41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _enemyPrefab: {fileID: 1821989084109805202, guid: fd491eeaa2624434c8b7242ff3616a72, type: 3}
+  _minimumSpawnTime: 1
+  _maximumSpawnTime: 2
+  _maxSpawnCount: 5
+--- !u!4 &406042068
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 406042066}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -80.92, y: -9.08, z: -2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -94916,8 +94963,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemyPrefab: {fileID: 1821989084109805202, guid: fd491eeaa2624434c8b7242ff3616a72, type: 3}
-  _minimumSpawnTime: 4
-  _maximumSpawnTime: 8
+  _minimumSpawnTime: 1
+  _maximumSpawnTime: 2
   _maxSpawnCount: 5
 --- !u!4 &818752514
 Transform:
@@ -95985,7 +96032,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d4f6fd9495fcc84a987a0c854ce0e54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spikeDamage: 10
+  spikeDamage: 20
 --- !u!1 &1571299056
 GameObject:
   m_ObjectHideFlags: 0
@@ -110620,8 +110667,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemyPrefab: {fileID: 1821989084109805202, guid: fd491eeaa2624434c8b7242ff3616a72, type: 3}
-  _minimumSpawnTime: 4
-  _maximumSpawnTime: 8
+  _minimumSpawnTime: 1
+  _maximumSpawnTime: 2
   _maxSpawnCount: 5
 --- !u!4 &1624236541
 Transform:
@@ -110667,8 +110714,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemyPrefab: {fileID: 1821989084109805202, guid: fd491eeaa2624434c8b7242ff3616a72, type: 3}
-  _minimumSpawnTime: 4
-  _maximumSpawnTime: 8
+  _minimumSpawnTime: 1
+  _maximumSpawnTime: 2
   _maxSpawnCount: 5
 --- !u!4 &1858479590
 Transform:
@@ -110678,7 +110725,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1858479588}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -84.58, y: -26.46, z: -2}
+  m_LocalPosition: {x: -84.04, y: -26.49, z: -2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -110833,8 +110880,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemyPrefab: {fileID: 1821989084109805202, guid: fd491eeaa2624434c8b7242ff3616a72, type: 3}
-  _minimumSpawnTime: 4
-  _maximumSpawnTime: 8
+  _minimumSpawnTime: 1
+  _maximumSpawnTime: 2
   _maxSpawnCount: 5
 --- !u!4 &2024683026
 Transform:
