@@ -12,10 +12,15 @@ public class ZombieMovement : MonoBehaviour
     private Transform player;
     private Rigidbody2D rb;
 
+    private Animator animator;
+
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         currentSpeed = baseSpeed;
+        animator = GetComponent<Animator>();
+
 
         GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
         if (playerObj != null)
@@ -26,6 +31,7 @@ public class ZombieMovement : MonoBehaviour
         {
             Debug.LogError("Player not found! Make sure your player is tagged 'Player'.");
         }
+
     }
 
     void FixedUpdate()
@@ -44,6 +50,13 @@ public class ZombieMovement : MonoBehaviour
             Vector2 direction = (player.position - transform.position).normalized;
             Vector2 moveStep = direction * currentSpeed * Time.fixedDeltaTime;
             rb.MovePosition(rb.position + moveStep);
+
+            // Set speed parameter for walk/idle animation
+            if (animator != null)
+            {
+                float movementSpeed = moveStep.magnitude;
+                animator.SetFloat("Speed", movementSpeed > 0.01f ? movementSpeed : 0f);
+            }
         }
     }
 }
