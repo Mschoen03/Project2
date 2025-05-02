@@ -8,11 +8,12 @@ public class ZombieHealth : MonoBehaviour
 
     private ZombieDisplayBar healthBar;
 
-
+private ZombieGameManager zombieGameManager;
 
     // Start is called before the first frame update
     private void Start()
     {
+        zombieGameManager = FindObjectOfType<ZombieGameManager>();
         healthBar = GetComponentInChildren<ZombieDisplayBar>();
 
         if (healthBar == null)
@@ -39,6 +40,10 @@ public class ZombieHealth : MonoBehaviour
 
     private void Die()
     {
+         if (zombieGameManager != null)
+        {
+            zombieGameManager.ZombieDied();
+        }
         Destroy(gameObject);
     }
 
