@@ -1,6 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-
+using System.Diagnostics;
 using UnityEngine;
 
 public class Projectile : MonoBehaviour
@@ -31,20 +31,23 @@ public class Projectile : MonoBehaviour
     //function called when the projectile collides with another object
     void OnTriggerEnter2D(Collider2D hitInfo)
     {
-        /*Get the enemy component of the object that was hit
-        //Enemy enemy = hitInfo.GetComponent<Enemy>();
+        UnityEngine.Debug.Log($"Bullet hit: {hitInfo.name} | Layer: {LayerMask.LayerToName(hitInfo.gameObject.layer)} | Tag: {hitInfo.tag}");
 
-        //if the object that was hit has an enemy component
-        if (enemy != null)
+
+        // Try to get the zombie health component
+        ZombieHealth zombie = hitInfo.GetComponentInParent<ZombieHealth>();
+        if (zombie != null)
         {
-            //call the take damage function of the enemy component
-            enemy.TakeDamage(damage);
-        } */
-
-        if (hitInfo.gameObject.tag != "Player")
+            UnityEngine.Debug.Log(" ZombieHealth found! Applying damage.");
+            zombie.TakeDamage(damage);
+        }
+        else
         {
-           
+            UnityEngine.Debug.Log(" ZombieHealth NOT found on: " + hitInfo.name);
+        }
 
+        if (!hitInfo.CompareTag("Player"))
+        {
             Destroy(gameObject);
         }
 

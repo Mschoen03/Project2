@@ -18,7 +18,9 @@ public class Weapon : MonoBehaviour
 
         if (ProjectilePrefab != null && firePoint != null)
         {
-            GameObject bullet = Instantiate(ProjectilePrefab, firePoint.position, Quaternion.identity);
+            Vector3 spawnPos = firePoint.position;
+            spawnPos.z = 0f; // force Z = 0
+            GameObject bullet = Instantiate(ProjectilePrefab, spawnPos, Quaternion.identity);
 
             // Calculate direction from firePoint to mouse
             Vector2 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -37,7 +39,7 @@ public class Weapon : MonoBehaviour
             }
 
             float angle = Mathf.Atan2(shootDirection.y, shootDirection.x) * Mathf.Rad2Deg;
-            bullet.transform.rotation = Quaternion.Euler(0f, 0f, angle );
+            bullet.transform.rotation = Quaternion.Euler(0f, 0f, angle);
         }
         else
         {

@@ -1,5 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+//using System.Diagnostics;
+
+//using System.Diagnostics;
 using UnityEngine;
 
 public class ZombieHealth : MonoBehaviour
@@ -8,7 +11,7 @@ public class ZombieHealth : MonoBehaviour
 
     private ZombieDisplayBar healthBar;
 
-private ZombieGameManager zombieGameManager;
+    private ZombieGameManager zombieGameManager;
 
     // Start is called before the first frame update
     private void Start()
@@ -29,8 +32,10 @@ private ZombieGameManager zombieGameManager;
     {
         health -= damage;
 
-        healthBar.SetValue(health);
+        Debug.Log("Zombie took damage: " + damage);
 
+        healthBar.SetValue(health);
+        
         if (health <= 0)
         {
             Die();
@@ -42,6 +47,7 @@ private ZombieGameManager zombieGameManager;
     {
          if (zombieGameManager != null)
         {
+        
             zombieGameManager.ZombieDied();
         }
         Destroy(gameObject);
