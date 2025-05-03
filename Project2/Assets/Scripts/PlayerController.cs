@@ -27,6 +27,9 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rb;
     private Vector2 moveInput;
 
+    private Animator animator;
+
+
     //shooting things 
     public Weapon weapon;
     
@@ -38,6 +41,8 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         currentStamina = maxStamina;
         currentSpeed = walkSpeed;
+        animator = GetComponent<Animator>();
+
     }
 
     void Update()
@@ -47,10 +52,15 @@ public class PlayerController : MonoBehaviour
         moveInput = new Vector2(horizontalInput, verticalInput).normalized;
         mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
-         if(Input.GetMouseButtonDown(0))
-         {
-               weapon.Fire();
-         }
+        if (Input.GetMouseButtonDown(0))
+        {
+            if (weapon != null)
+                weapon.Fire();
+
+            if (animator != null)
+                animator.SetTrigger("Shoot");
+        }
+
         // Handle cooldown
         if (cooldownTimer > 0f)
         {
@@ -128,7 +138,7 @@ public class PlayerController : MonoBehaviour
         Vector2 aimDirection = mousePosition - rb.position;
         rb.MovePosition(rb.position + moveInput * currentSpeed * Time.fixedDeltaTime);
         float aimAngle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg + 90f;
-        rb.rotation = aimAngle;
+        //rb.rotation = aimAngle;
 
     }
 }
