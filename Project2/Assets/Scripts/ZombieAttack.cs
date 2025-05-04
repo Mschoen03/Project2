@@ -8,6 +8,9 @@ public class ZombieAttack : MonoBehaviour
     public float attackCooldown = 1f;
     public int attackDamage = 10;
 
+    public AudioSource audioSource;         
+    public AudioClip attackSound;
+
     private float attackTimer = 0f;
     private Transform player;
     private Animator animator;
