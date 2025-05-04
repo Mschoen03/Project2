@@ -10,11 +10,22 @@ public class Weapon : MonoBehaviour
     public GameObject ProjectilePrefab;
     public Transform firePoint;
     public float fireforce = 20f;
+     public AudioSource gunshotSound;
 
 
     public void Fire()
     {
         Debug.Log("Fire called!");
+        
+        if (gunshotSound != null)
+        {
+            gunshotSound.Play();
+        }
+        else
+        {
+            Debug.LogWarning("Gunshot sound AudioSource is not assigned.");
+        }
+
 
         if (ProjectilePrefab != null && firePoint != null)
         {
