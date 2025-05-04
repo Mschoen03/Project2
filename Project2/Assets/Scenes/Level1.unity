@@ -4556,14 +4556,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textbox: {fileID: 1036149252}
   senetences:
-  - 'A tutorial in order to succeed. Use the arrows to move Cartman '
+  - 'A tutorial in order to succeed. Use the arrows or WASD keys to move Cartman '
+  - Pressing down "shift" will allow you to sprint
   - 'Use the mouse to aim and the mouse left button to shoot '
   - The year is 2026 and a new variant of covid came out.
   - 'Covid 626 swept the country by storm effecting the country in a rapid pace. '
   - Cartman's family became lost during the panic over toilet paper at their local
     Costco.
   - 'Cartmen made a promise to them to find them and take them to safety. '
-  typingSpeed: 0.1
+  typingSpeed: 0.04
   ContinueButton: {fileID: 766873805}
   dialogPanel: {fileID: 962141886}
 --- !u!4 &316823084
@@ -4611,7 +4612,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _enemyPrefab: {fileID: 1821989084109805202, guid: fd491eeaa2624434c8b7242ff3616a72, type: 3}
   _minimumSpawnTime: 1
-  _maximumSpawnTime: 2
+  _maximumSpawnTime: 1
   _maxSpawnCount: 5
 --- !u!4 &406042068
 Transform:
@@ -4963,7 +4964,7 @@ Transform:
   m_GameObject: {fileID: 555548739}
   m_LocalRotation: {x: -0.0068779294, y: 0.031023731, z: 0.008763369, w: 0.9994566}
   m_LocalPosition: {x: -68.64, y: -14.2, z: 0}
-  m_LocalScale: {x: 0.9625, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 212480830}
   - {fileID: 1238351290}
@@ -95122,7 +95123,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _enemyPrefab: {fileID: 1821989084109805202, guid: fd491eeaa2624434c8b7242ff3616a72, type: 3}
   _minimumSpawnTime: 1
-  _maximumSpawnTime: 2
+  _maximumSpawnTime: 1
   _maxSpawnCount: 5
 --- !u!4 &818752514
 Transform:
@@ -96427,7 +96428,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!61 &1425566411
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -111188,7 +111189,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _enemyPrefab: {fileID: 1821989084109805202, guid: fd491eeaa2624434c8b7242ff3616a72, type: 3}
   _minimumSpawnTime: 1
-  _maximumSpawnTime: 2
+  _maximumSpawnTime: 1
   _maxSpawnCount: 5
 --- !u!4 &1624236541
 Transform:
@@ -111235,7 +111236,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _enemyPrefab: {fileID: 1821989084109805202, guid: fd491eeaa2624434c8b7242ff3616a72, type: 3}
   _minimumSpawnTime: 1
-  _maximumSpawnTime: 2
+  _maximumSpawnTime: 1
   _maxSpawnCount: 5
 --- !u!4 &1858479590
 Transform:
@@ -111405,7 +111406,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _enemyPrefab: {fileID: 1821989084109805202, guid: fd491eeaa2624434c8b7242ff3616a72, type: 3}
   _minimumSpawnTime: 1
-  _maximumSpawnTime: 2
+  _maximumSpawnTime: 1
   _maxSpawnCount: 5
 --- !u!4 &2024683026
 Transform:
@@ -111428,6 +111429,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1821989084109805192, guid: fd491eeaa2624434c8b7242ff3616a72, type: 3}
+      propertyPath: health
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 1821989084109805193, guid: fd491eeaa2624434c8b7242ff3616a72, type: 3}
       propertyPath: m_BodyType
       value: 0
@@ -111447,6 +111452,10 @@ PrefabInstance:
     - target: {fileID: 1821989084109805204, guid: fd491eeaa2624434c8b7242ff3616a72, type: 3}
       propertyPath: m_SortingOrder
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1821989084109805205, guid: fd491eeaa2624434c8b7242ff3616a72, type: 3}
+      propertyPath: maxSpeed
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1821989084109805207, guid: fd491eeaa2624434c8b7242ff3616a72, type: 3}
       propertyPath: m_RootOrder

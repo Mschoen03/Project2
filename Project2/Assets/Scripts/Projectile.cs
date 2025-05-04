@@ -20,6 +20,8 @@ public class Projectile : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Destroy(gameObject, 3f);
+
         //get rigidbody component
         rb = GetComponent<Rigidbody2D>();
 

@@ -241,7 +241,7 @@ Transform:
   m_GameObject: {fileID: 1821989084109805202}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -61.4326, y: -12.5322, z: 0}
-  m_LocalScale: {x: 1.531404, y: 1.1318547, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1821989084326508755}
   m_Father: {fileID: 0}
@@ -331,7 +331,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: baad69958e560fd4e8452f2f3ccf6e6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 20
+  health: 50
 --- !u!114 &1821989084109805195
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -358,8 +358,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseSpeed: 1
-  maxSpeed: 2
-  accelerationRate: 0.01
+  maxSpeed: 3
+  accelerationRate: 0.1
 --- !u!95 &1821989084109805194
 Animator:
   serializedVersion: 5
@@ -394,7 +394,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackRange: 1.5
-  attackCooldown: 3
+  attackCooldown: 4
   attackDamage: 10
 --- !u!70 &1821989084109805197
 CapsuleCollider2D:
