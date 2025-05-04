@@ -19,9 +19,12 @@ public class ZombieSpawner : MonoBehaviour
     private float _timeUntilSpawn;
     private int _spawnedCount = 0;   // ? NEW: current zombies spawned
 
+    private ZombieGameManager gameManager;
+
     void Awake()
     {
         SetTimeUntilSpawn();
+        gameManager = FindObjectOfType<ZombieGameManager>();
     }
 
     void Update()
@@ -35,6 +38,12 @@ public class ZombieSpawner : MonoBehaviour
         {
             Instantiate(_enemyPrefab, transform.position, Quaternion.identity);
             _spawnedCount++; // ? Track how many have been spawned
+
+             if (gameManager != null) 
+            {
+                gameManager.RegisterZombie(); 
+            }
+
             SetTimeUntilSpawn();
         }
     }
