@@ -358,7 +358,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseSpeed: 1
-  maxSpeed: 3
+  maxSpeed: 2.5
   accelerationRate: 0.1
 --- !u!95 &1821989084109805194
 Animator:
