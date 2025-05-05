@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
@@ -13,14 +13,24 @@ public class DialogManager : MonoBehaviour
     public GameObject ContinueButton;
     public GameObject dialogPanel;
 
+    private Coroutine typingCoroutine;
+    private bool isTyping = false;
+
     void OnEnable()
     {
-        ContinueButton.SetActive(false);
-        StartCoroutine(Type());
+        ContinueButton.SetActive(true);
+        StartTyping();
+    }
+
+    void StartTyping()
+    {
+        textbox.text = "";
+        typingCoroutine = StartCoroutine(Type());
     }
 
     IEnumerator Type()
     {
+        isTyping = true;
         textbox.text = "";
 
         foreach (char letter in senetences[index])
@@ -29,23 +39,32 @@ public class DialogManager : MonoBehaviour
             yield return new WaitForSeconds(typingSpeed);
         }
 
-        ContinueButton.SetActive(true);
+        isTyping = false;
     }
 
     public void NextSentence()
     {
-        ContinueButton.SetActive(false);
+        if (isTyping)
+        {
+            // Skip typing: Stop coroutine and instantly display full sentence
+            StopCoroutine(typingCoroutine);
+            textbox.text = senetences[index];
+            isTyping = false;
+            return;
+        }
 
-        if(index < senetences.Length - 1)
+        // Move to next sentence
+        if (index < senetences.Length - 1)
         {
             index++;
-            textbox.text = "";
-            StartCoroutine(Type());
+            StartTyping();
         }
         else
         {
             textbox.text = "";
+            ContinueButton.SetActive(false); // 🔥 Hide the button
             dialogPanel.SetActive(false);
         }
+
     }
 }

@@ -1,47 +1,58 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class ZombieSpawner : MonoBehaviour
 {
-    [SerializeField]
-    private GameObject _enemyPrefab;
+    [SerializeField] private GameObject _enemyPrefab;
 
-    [SerializeField]
-    private float _minimumSpawnTime;
+    [SerializeField] private float spawnStartDelay = 30f;
+    private bool spawningActive = false;
 
-    [SerializeField]
-    private float _maximumSpawnTime;
+    [SerializeField] private float _minimumSpawnTime = 5f;
+    [SerializeField] private float _maximumSpawnTime = 8f;
+    [SerializeField] private float minimumAllowedSpawnTime = 0.25f; // never drop below this
+    [SerializeField] private float spawnSpeedRampRate = 0.1f; // rate of spawn time reduction
 
-    [SerializeField]
-    private int _maxSpawnCount = 50; // ? NEW: max zombies to spawn
+    [SerializeField] private int _maxSpawnCount = 50;
 
     private float _timeUntilSpawn;
-    private int _spawnedCount = 0;   // ? NEW: current zombies spawned
+    private int _spawnedCount = 0;
 
     private ZombieGameManager gameManager;
 
     void Awake()
     {
+        Invoke(nameof(EnableSpawning), spawnStartDelay);
+
         SetTimeUntilSpawn();
         gameManager = FindObjectOfType<ZombieGameManager>();
     }
 
+    void EnableSpawning()
+    {
+        spawningActive = true;
+    }
+
     void Update()
     {
-        if (_spawnedCount >= _maxSpawnCount)
-            return; // ? Stop spawning once limit reached
+        if (!spawningActive || _spawnedCount >= _maxSpawnCount)
+            return;
+
+        // 🔥 Gradually decrease spawn times over time
+        _minimumSpawnTime = Mathf.Max(minimumAllowedSpawnTime, _minimumSpawnTime - spawnSpeedRampRate * Time.deltaTime);
+        _maximumSpawnTime = Mathf.Max(_minimumSpawnTime + 0.1f, _maximumSpawnTime - spawnSpeedRampRate * Time.deltaTime);
 
         _timeUntilSpawn -= Time.deltaTime;
 
         if (_timeUntilSpawn <= 0)
         {
             Instantiate(_enemyPrefab, transform.position, Quaternion.identity);
-            _spawnedCount++; // ? Track how many have been spawned
+            _spawnedCount++;
 
-             if (gameManager != null) 
+            if (gameManager != null)
             {
-                gameManager.RegisterZombie(); 
+                gameManager.RegisterZombie();
             }
 
             SetTimeUntilSpawn();
