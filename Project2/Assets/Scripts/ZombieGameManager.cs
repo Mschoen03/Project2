@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ZombieGameManager : MonoBehaviour
 {
@@ -7,11 +8,24 @@ public class ZombieGameManager : MonoBehaviour
     private int zombiesSpawned = 0;
     private int zombiesKilled = 0;
 
+    private bool hasWon = false;
+
     void Start()
     {
         if (winText != null)
         {
             winText.SetActive(false);
+        }
+    }
+
+    void Update()
+    {
+        if (hasWon)
+        {
+            if (Input.GetKeyDown(KeyCode.C))
+            {
+                SceneManager.LoadScene("Credits"); // Replace with exact name of your credits scene
+            }
         }
     }
 
@@ -36,5 +50,7 @@ public class ZombieGameManager : MonoBehaviour
         {
             winText.SetActive(true);
         }
+
+        hasWon = true;
     }
 }
