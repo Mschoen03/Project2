@@ -13,6 +13,13 @@ public class WaveController : MonoBehaviour
     private int currentRound = 0;
     private bool wavesStarted = false;
 
+    private RoundUI roundUI; // ✅ Reference to round display
+
+    void Start()
+    {
+        roundUI = FindObjectOfType<RoundUI>(); // ✅ Locate RoundUI once
+    }
+
     public void StartWaves()
     {
         if (!wavesStarted)
@@ -59,6 +66,9 @@ public class WaveController : MonoBehaviour
     private IEnumerator StartWave()
     {
         Debug.Log($"[WaveController] Wave {currentRound} started!");
+
+        // ✅ Update round display on screen
+        roundUI?.UpdateRound(currentRound);
 
         foreach (ZombieSpawner spawner in zombieSpawners)
         {
