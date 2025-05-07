@@ -19,6 +19,7 @@ public class ZombieSpawner : MonoBehaviour
     private float _timeUntilSpawn;
     private int _spawnedCount = 0;
 
+    private int currentRound = 1;
     private ZombieGameManager gameManager;
 
     void Awake()
@@ -39,7 +40,7 @@ public class ZombieSpawner : MonoBehaviour
         if (!spawningActive || _spawnedCount >= _maxSpawnCount)
             return;
 
-        // 🔥 Gradually decrease spawn times over time
+       
         _minimumSpawnTime = Mathf.Max(minimumAllowedSpawnTime, _minimumSpawnTime - spawnSpeedRampRate * Time.deltaTime);
         _maximumSpawnTime = Mathf.Max(_minimumSpawnTime + 0.1f, _maximumSpawnTime - spawnSpeedRampRate * Time.deltaTime);
 
@@ -62,5 +63,20 @@ public class ZombieSpawner : MonoBehaviour
     private void SetTimeUntilSpawn()
     {
         _timeUntilSpawn = Random.Range(_minimumSpawnTime, _maximumSpawnTime);
+    }
+
+   
+    public void SetRound(int round)
+    {
+        currentRound = round;
+        Debug.Log("Round set to: " + currentRound);
+        // You could adjust difficulty here if needed
+    }
+
+    
+    public void StartSpawningManually()
+    {
+        spawningActive = true;
+        Debug.Log("Manual zombie spawning started.");
     }
 }
