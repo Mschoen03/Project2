@@ -33,7 +33,7 @@ public class Projectile : MonoBehaviour
     //function called when the projectile collides with another object
     void OnTriggerEnter2D(Collider2D hitInfo)
     {
-        UnityEngine.Debug.Log($"Bullet hit: {hitInfo.name} | Layer: {LayerMask.LayerToName(hitInfo.gameObject.layer)} | Tag: {hitInfo.tag}");
+        
 
 
         // Try to get the zombie health component
@@ -43,10 +43,7 @@ public class Projectile : MonoBehaviour
             UnityEngine.Debug.Log(" ZombieHealth found! Applying damage.");
             zombie.TakeDamage(damage);
         }
-        else
-        {
-            UnityEngine.Debug.Log(" ZombieHealth NOT found on: " + hitInfo.name);
-        }
+        
 
         if (!hitInfo.CompareTag("Player"))
         {

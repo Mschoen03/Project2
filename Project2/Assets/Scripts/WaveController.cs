@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class WaveController : MonoBehaviour
@@ -13,15 +12,25 @@ public class WaveController : MonoBehaviour
     private int currentRound = 0;
     private bool wavesStarted = false;
 
-    public void StartWaves()
+    private RoundUI roundUI; // UI reference (optional)
+
+    void Start()
     {
-        if (!wavesStarted)
-        {
-            wavesStarted = true;
-            currentRound = 1;
-            StartCoroutine(StartWave());
-        }
+        roundUI = FindObjectOfType<RoundUI>(); // optional round display
     }
+
+    // Called externally (e.g., from DialogManager)
+    public void StartWaves()
+{
+    if (!wavesStarted)
+    {
+        Debug.Log("[WaveController] StartWaves() called.");
+        wavesStarted = true;
+        currentRound = 1;
+        StartCoroutine(StartWave());
+    }
+}
+
 
     public void RegisterZombie()
     {
@@ -31,13 +40,12 @@ public class WaveController : MonoBehaviour
     public void DeregisterZombie()
     {
         activeZombies--;
-        if (activeZombies <= 0 && currentRound < maxRounds)
+        if (activeZombies <= 0)
         {
-            StartCoroutine(NextWaveDelay());
-        }
-        else if (activeZombies <= 0 && currentRound == maxRounds)
-        {
-            gameManager?.TriggerWin();
+            if (currentRound < maxRounds)
+                StartCoroutine(NextWaveDelay());
+            else
+                gameManager?.TriggerWin();
         }
     }
 
@@ -53,12 +61,14 @@ public class WaveController : MonoBehaviour
 
         Debug.Log($"All zombies dead. Wave {currentRound} starts in {delayBeforeNextWave} seconds...");
         yield return new WaitForSeconds(delayBeforeNextWave);
+
         StartCoroutine(StartWave());
     }
 
     private IEnumerator StartWave()
     {
         Debug.Log($"[WaveController] Wave {currentRound} started!");
+        roundUI?.UpdateRound(currentRound);
 
         foreach (ZombieSpawner spawner in zombieSpawners)
         {
@@ -66,10 +76,11 @@ public class WaveController : MonoBehaviour
             {
                 Debug.Log($"[WaveController] Triggering spawner: {spawner.name} at round {currentRound}");
                 spawner.SetRound(currentRound);
-                spawner.StartSpawningManually(currentRound == 1);
+                spawner.StartSpawningManually(); // ✅ Always start spawning
             }
         }
 
         yield return null;
     }
+
 }

@@ -15,7 +15,7 @@ public class Weapon : MonoBehaviour
 
     public void Fire()
     {
-        Debug.Log("Fire called!");
+        
         
         if (gunshotSound != null)
         {
@@ -42,7 +42,7 @@ public class Weapon : MonoBehaviour
             if (rb != null)
             {
                 rb.velocity = shootDirection * fireforce;
-                Debug.Log("Bullet velocity: " + rb.velocity);
+                
             }
             else
             {

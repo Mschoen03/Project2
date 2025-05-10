@@ -49,7 +49,6 @@ public class DialogManager : MonoBehaviour
     {
         if (isTyping)
         {
-            // ⏩ Skip to end of sentence
             StopCoroutine(typingCoroutine);
             textbox.text = senetences[index];
             isTyping = false;
@@ -63,19 +62,22 @@ public class DialogManager : MonoBehaviour
         }
         else
         {
-            // ✅ Dialogue finished
             textbox.text = "";
             ContinueButton.SetActive(false);
             dialogPanel.SetActive(false);
 
-            // ✅ Trigger all assigned zombie spawners
-            foreach (ZombieSpawner spawner in zombieSpawners)
+            // ✅ Use WaveController, not spawners directly
+            WaveController waveController = FindObjectOfType<WaveController>();
+            if (waveController != null)
             {
-                if (spawner != null)
-                {
-                    spawner.StartSpawningManually();
-                }
+                waveController.StartWaves();
+                Debug.Log("[DialogManager] Waves started!");
+            }
+            else
+            {
+                Debug.LogError("WaveController not found in scene.");
             }
         }
     }
+
 }
