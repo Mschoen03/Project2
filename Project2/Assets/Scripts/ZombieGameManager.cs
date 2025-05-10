@@ -4,53 +4,27 @@ using UnityEngine.SceneManagement;
 public class ZombieGameManager : MonoBehaviour
 {
     [SerializeField] private GameObject winText;
-
-    private int zombiesSpawned = 0;
-    private int zombiesKilled = 0;
-
     private bool hasWon = false;
 
     void Start()
     {
-        if (winText != null)
-        {
-            winText.SetActive(false);
-        }
+        if (winText != null) winText.SetActive(false);
     }
 
     void Update()
     {
-        if (hasWon)
+        if (hasWon && Input.GetKeyDown(KeyCode.C))
         {
-            if (Input.GetKeyDown(KeyCode.C))
-            {
-                SceneManager.LoadScene("Credits"); // Replace with exact name of your credits scene
-            }
+            SceneManager.LoadScene("Credits");
         }
     }
 
-    public void RegisterZombie()
+    public void TriggerWin()
     {
-        zombiesSpawned++;
-    }
-
-    public void ZombieDied()
-    {
-        zombiesKilled++;
-
-        if (zombiesKilled >= zombiesSpawned)
-        {
-            ShowWinMessage();
-        }
-    }
-
-    private void ShowWinMessage()
-    {
-        if (winText != null)
-        {
-            winText.SetActive(true);
-        }
-
+        if (hasWon) return;
         hasWon = true;
+
+        Debug.Log("You Win! All waves complete.");
+        if (winText != null) winText.SetActive(true);
     }
 }

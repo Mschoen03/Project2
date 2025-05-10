@@ -226,7 +226,7 @@ GameObject:
   - component: {fileID: 1821989084109805206}
   - component: {fileID: 1821989084109805197}
   m_Layer: 6
-  m_Name: Zombie
+  m_Name: FastZombie
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -288,7 +288,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 10
   m_Sprite: {fileID: 4035959289877228764, guid: 2e255b8129068924389264b65a34de08, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.4198113, b: 0.4198113, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -331,7 +331,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: baad69958e560fd4e8452f2f3ccf6e6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 50
+  health: 30
 --- !u!114 &1821989084109805195
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -357,9 +357,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1cff0c2da1a4214680d59e91f44f865, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseSpeed: 1
-  maxSpeed: 2.5
-  accelerationRate: 0.07
+  baseSpeed: 2
+  maxSpeed: 7
+  accelerationRate: 0.7
 --- !u!95 &1821989084109805194
 Animator:
   serializedVersion: 5
@@ -395,7 +395,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackRange: 1.5
   attackCooldown: 4
-  attackDamage: 10
+  attackDamage: 5
   audioSource: {fileID: 0}
   attackSound: {fileID: 0}
 --- !u!70 &1821989084109805197

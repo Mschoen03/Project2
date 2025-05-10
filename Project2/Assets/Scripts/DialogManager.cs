@@ -16,6 +16,9 @@ public class DialogManager : MonoBehaviour
     private Coroutine typingCoroutine;
     private bool isTyping = false;
 
+    // ✅ Assign all spawners in the Inspector
+    public ZombieSpawner[] zombieSpawners;
+
     void OnEnable()
     {
         ContinueButton.SetActive(true);
@@ -46,14 +49,13 @@ public class DialogManager : MonoBehaviour
     {
         if (isTyping)
         {
-            // Skip typing: Stop coroutine and instantly display full sentence
+            // ⏩ Skip to end of sentence
             StopCoroutine(typingCoroutine);
             textbox.text = senetences[index];
             isTyping = false;
             return;
         }
 
-        // Move to next sentence
         if (index < senetences.Length - 1)
         {
             index++;
@@ -61,10 +63,19 @@ public class DialogManager : MonoBehaviour
         }
         else
         {
+            // ✅ Dialogue finished
             textbox.text = "";
-            ContinueButton.SetActive(false); // 🔥 Hide the button
+            ContinueButton.SetActive(false);
             dialogPanel.SetActive(false);
-        }
 
+            // ✅ Trigger all assigned zombie spawners
+            foreach (ZombieSpawner spawner in zombieSpawners)
+            {
+                if (spawner != null)
+                {
+                    spawner.StartSpawningManually();
+                }
+            }
+        }
     }
 }
