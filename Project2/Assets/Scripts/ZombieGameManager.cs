@@ -53,9 +53,4 @@ public class ZombieGameManager : MonoBehaviour
 
         hasWon = true;
     }
-
-    public void TriggerWin()
-    {
-        ShowWinMessage();
-    }
 }

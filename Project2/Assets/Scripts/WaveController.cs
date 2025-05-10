@@ -76,7 +76,7 @@ public class WaveController : MonoBehaviour
             {
                 Debug.Log($"[WaveController] Triggering spawner: {spawner.name} at round {currentRound}");
                 spawner.SetRound(currentRound);
-                spawner.StartSpawningManually();  // ✅ Corrected: No argument passed
+                spawner.StartSpawningManually(currentRound == 1);
             }
         }
 
